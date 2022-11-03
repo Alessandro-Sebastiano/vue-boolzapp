@@ -88,6 +88,7 @@
                                 <span class="message"
                                     :class="contacts[currentId].messages[i].status === 'sent' ? 'my-message' : 'contact-message'">
                                     <span class="message-text">{{contacts[currentId].messages[i].message}}</span>
+                                    <span class="message-date">{{contacts[currentId].messages[i].date}}</span>
                                 </span>
                             </div>
                         </div>

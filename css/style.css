@@ -292,6 +292,7 @@ body {
     height: calc(100% - 124px);
     flex-grow: 1;
     padding: 20px 26px;
+    overflow: auto;
 }
 
 .message-box {
@@ -312,6 +313,15 @@ body {
     margin-right: 16px;
     display: block;
     word-break: normal;
+}
+
+
+.message-date {
+    font-size: 0.6rem;
+    display: block;
+    text-align: right;
+    margin-top: 6px;
+    color: #B1B1B1;
 }
 
 
