@@ -51,15 +51,17 @@
                     </div>
                     <div class="user-contacts">
                         <div class="contact-box" :class="i === currentId ? 'selected' : ''"
-                            v-for="(element, i) in contacts" @click="selectedContact(contacts[i].id, i)">
+                            v-for="(element, i) in contactsFilter" @click="selectedContact(contactsFilter[i].id, i)">
                             <div class="contact-image user-image">
-                                <img :src="contacts[i].avatar" alt="avatar1">
+                                <img :src="contactsFilter[i].avatar" :alt="contactsFilter[i].name">
                             </div>
                             <div class="contact-details">
-                                <span>{{contacts[i].name}}</span>
-                                <span class="last-message">{{contacts[i].messages[contacts[i].messages.length
+                                <span>{{contactsFilter[i].name}}</span>
+                                <span
+                                    class="last-message">{{contactsFilter[i].messages[contactsFilter[i].messages.length
                                     -1].message}}</span>
-                                <span class="contact-date">{{contacts[i].messages[contacts[i].messages.length
+                                <span
+                                    class="contact-date">{{contactsFilter[i].messages[contactsFilter[i].messages.length
                                     -1].date}}</span>
                             </div>
                         </div>
@@ -71,7 +73,7 @@
                         <div class="chat-nav">
                             <div class="chat-user-details">
                                 <div class="chat-user-image user-image">
-                                    <img :src="contacts[currentId].avatar" alt="">
+                                    <img :src="contacts[currentId].avatar" :alt="contacts[currentId].name">
                                 </div>
                                 <div class="chat-user-text">
                                     <span>{{contacts[currentId].name}}</span>

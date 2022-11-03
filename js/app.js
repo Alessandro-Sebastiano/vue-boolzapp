@@ -193,8 +193,7 @@ const app = createApp({
 
     methods: {
 
-        selectedContact(id, index) {
-            console.log(id, index);
+        selectedContact(id) {
             this.currentId = this.contacts.findIndex(object => {
                 return object.id === id;
             });
@@ -202,6 +201,21 @@ const app = createApp({
         }
 
     },
+
+
+    computed: {
+
+        contactsFilter() {
+
+            return this.contacts.filter((contact) => {
+
+                return contact.name.toLowerCase().includes(this.searchContacts.trim().toLowerCase());
+
+            })
+
+        }
+
+    }
 
 
 })

@@ -197,6 +197,18 @@ body {
 }
 
 
+.user-contacts::-webkit-scrollbar {
+    width: 8px;
+    background-color: #fff;
+}
+
+
+.user-contacts::-webkit-scrollbar-thumb {
+    width: 100%;
+    background-color: #202c33;
+    border-radius: 8px;
+}
+
 
 .contact-box {
     width: 100%;
@@ -210,6 +222,7 @@ body {
 
 .contact-details {
     width: 100%;
+    padding: 4px;
 }
 
 .contact-details span {
@@ -304,6 +317,19 @@ body {
     flex-grow: 1;
     padding: 20px 26px;
     overflow: auto;
+}
+
+
+.chat-display::-webkit-scrollbar {
+    width: 8px;
+    background-color: #fff;
+}
+
+
+.chat-display::-webkit-scrollbar-thumb {
+    width: 100%;
+    background-color: #202c33;
+    border-radius: 8px;
 }
 
 .message-box {
