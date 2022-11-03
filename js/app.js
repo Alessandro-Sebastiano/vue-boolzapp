@@ -188,6 +188,7 @@ const app = createApp({
             currentId: 0,
             isVisible: false,
             searchContacts: '',
+            typedMessage: '',
         }
     },
 
@@ -198,6 +199,30 @@ const app = createApp({
                 return object.id === id;
             });
             this.isVisible = true;
+        },
+
+
+        sendNewMessage() {
+            const newTypedMessage = {
+
+                date: '10/01/2020 15:30:55',
+                message: this.typedMessage,
+                status: 'sent'
+
+            }
+
+            if (this.typedMessage != '') {
+                this.contacts[this.currentId].messages.push(newTypedMessage);
+
+                setTimeout(() => {
+                    const newRecivedMessage = { ...newTypedMessage };
+                    newRecivedMessage.message = 'OK!';
+                    newRecivedMessage.status = 'received';
+                    console.log(newRecivedMessage);
+                    this.contacts[this.currentId].messages.push(newRecivedMessage);
+                }, 1000);
+            }
+            this.typedMessage = '';
         }
 
     },
