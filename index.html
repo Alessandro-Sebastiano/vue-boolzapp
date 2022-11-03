@@ -57,7 +57,10 @@
                             </div>
                             <div class="contact-details">
                                 <span>{{contacts[i].name}}</span>
-                                <span class="last-message">{{contacts[i].messages[0].message}}</span>
+                                <span class="last-message">{{contacts[i].messages[contacts[i].messages.length
+                                    -1].message}}</span>
+                                <span class="contact-date">{{contacts[i].messages[contacts[i].messages.length
+                                    -1].date}}</span>
                             </div>
                         </div>
                     </div>

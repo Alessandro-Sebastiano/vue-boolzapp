@@ -113,7 +113,7 @@ body {
 
 .user-options i {
     margin: 8px;
-    padding: 2px;
+    padding: 4px;
     cursor: pointer;
     color: #B1B1B1;
 }
@@ -208,6 +208,10 @@ body {
 }
 
 
+.contact-details {
+    width: 100%;
+}
+
 .contact-details span {
     display: block;
 }
@@ -216,6 +220,13 @@ body {
 .last-message {
     color: #B1B1B1;
     margin-top: 2px;
+}
+
+.contact-date {
+    color: #6B7376;
+    font-size: 0.7rem;
+    text-align: right;
+    margin-top: 4px;
 }
 
 .selected {
@@ -280,7 +291,7 @@ body {
 
 .chat-user-options i {
     margin: 8px;
-    padding: 2px;
+    padding: 4px;
     cursor: pointer;
     color: #B1B1B1;
 }
@@ -368,6 +379,12 @@ body {
     cursor: pointer;
 }
 
+
+
+i:hover {
+    color: #6B7376;
+    transition: all 0.2s ease;
+}
 
 
 
