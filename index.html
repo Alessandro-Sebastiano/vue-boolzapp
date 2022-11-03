@@ -46,11 +46,12 @@
                         </div>
                     </div>
                     <div class="search">
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchContacts">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div class="user-contacts">
-                        <div class="contact-box" v-for="(element, i) in contacts">
+                        <div class="contact-box" :class="i === currentId ? 'selected' : ''"
+                            v-for="(element, i) in contacts" @click="selectedContact(contacts[i].id, i)">
                             <div class="contact-image user-image">
                                 <img :src="contacts[i].avatar" alt="avatar1">
                             </div>
@@ -62,7 +63,41 @@
                     </div>
                 </div>
 
-                <div class="chat-section"></div>
+                <div class="chat-section">
+                    <div class="chat-box" :class="{chatshow : isVisible}">
+                        <div class="chat-nav">
+                            <div class="chat-user-details">
+                                <div class="chat-user-image user-image">
+                                    <img :src="contacts[currentId].avatar" alt="">
+                                </div>
+                                <div class="chat-user-text">
+                                    <span>{{contacts[currentId].name}}</span>
+                                    <span>Ultimo accesso</span>
+                                </div>
+                            </div>
+                            <div class="chat-user-options">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <i class="fa-solid fa-paperclip"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </div>
+                        <div class="chat-display">
+                            <div class="message-box"
+                                :class="contacts[currentId].messages[i].status === 'received' ? '' : 'my-message-position'"
+                                v-for="(element, i) in contacts[currentId].messages">
+                                <span class="message"
+                                    :class="contacts[currentId].messages[i].status === 'sent' ? 'my-message' : 'contact-message'">
+                                    <span class="message-text">{{contacts[currentId].messages[i].message}}</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <i class="fa-regular fa-face-smile"></i>
+                            <input type="text" placeholder="Scrivi un messaggio">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
