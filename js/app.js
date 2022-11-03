@@ -189,6 +189,7 @@ const app = createApp({
             isVisible: false,
             searchContacts: '',
             typedMessage: '',
+            currentMessage: null,
         }
     },
 
@@ -218,12 +219,45 @@ const app = createApp({
                     const newRecivedMessage = { ...newTypedMessage };
                     newRecivedMessage.message = 'OK!';
                     newRecivedMessage.status = 'received';
-                    console.log(newRecivedMessage);
                     this.contacts[this.currentId].messages.push(newRecivedMessage);
                 }, 1000);
             }
             this.typedMessage = '';
+        },
+
+
+        messageFilter(obj) {
+
+            const mess = obj.messages.filter((mex) => {
+
+                return mex.status === 'received';
+            })
+
+            return mess[mess.length - 1];
+
+        },
+
+
+        showMessageMenu(i) {
+
+            if (!this.currentMessage) {
+                this.currentMessage = i;
+            } else {
+                this.currentMessage = '';
+            }
+
+        },
+
+
+        deleteMessage(i) {
+            if (this.contacts[this.currentId].messages.length > 1) {
+                this.contacts[this.currentId].messages.splice(i, 1);
+            } else {
+                this.contacts[this.currentId].messages.pop();
+            }
+            this.currentMessage = '';
         }
+
 
     },
 
@@ -238,7 +272,7 @@ const app = createApp({
 
             })
 
-        }
+        },
 
     }
 

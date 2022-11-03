@@ -57,9 +57,7 @@
                             </div>
                             <div class="contact-details">
                                 <span>{{contactsFilter[i].name}}</span>
-                                <span
-                                    class="last-message">{{contactsFilter[i].messages[contactsFilter[i].messages.length
-                                    -1].message}}</span>
+                                <span class="last-message">{{messageFilter(element).message}}</span>
                                 <span
                                     class="contact-date">{{contactsFilter[i].messages[contactsFilter[i].messages.length
                                     -1].date}}</span>
@@ -94,13 +92,20 @@
                                     :class="contacts[currentId].messages[i].status === 'sent' ? 'my-message' : 'contact-message'">
                                     <span class="message-text">{{contacts[currentId].messages[i].message}}</span>
                                     <span class="message-date">{{contacts[currentId].messages[i].date}}</span>
+                                    <i class="fa-solid fa-angle-down" @click="showMessageMenu(i, element)"></i>
+                                    <div class="message-menu" :class="i === currentMessage ? 'showmenu' : ''">
+                                        <ul>
+                                            <li>Message info</li>
+                                            <li @click="deleteMessage(i)">Delete message</li>
+                                        </ul>
+                                    </div>
                                 </span>
                             </div>
                         </div>
                         <div class="chat-input">
                             <i class="fa-regular fa-face-smile"></i>
                             <input type="text" placeholder="Scrivi un messaggio" v-model.trim="typedMessage"
-                                @keyup.enter="sendNewMessage">
+                                @keyup.enter="sendNewMessage()">
                             <i class="fa-solid fa-microphone"></i>
                         </div>
                     </div>
