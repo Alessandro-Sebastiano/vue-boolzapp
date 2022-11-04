@@ -70,6 +70,7 @@
                     <div class="chat-box" :class="{chatshow : isVisible}">
                         <div class="chat-nav">
                             <div class="chat-user-details">
+                                <i class="fa-solid fa-arrow-left" @click="removeChatDisplay()"></i>
                                 <div class="chat-user-image user-image">
                                     <img :src="contacts[currentId].avatar" :alt="contacts[currentId].name">
                                 </div>

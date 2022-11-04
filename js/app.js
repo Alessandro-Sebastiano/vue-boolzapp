@@ -203,6 +203,10 @@ const app = createApp({
             this.isVisible = true;
         },
 
+        removeChatDisplay() {
+            this.isVisible = false;
+        },
+
 
         sendNewMessage() {
             const newTypedMessage = {
