@@ -2,13 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-
-
-body {
     font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
 }
+
+
+
+body {}
 
 
 
@@ -141,7 +141,6 @@ body {
 
 .notification {
     width: 100%;
-    height: 66px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -325,6 +324,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 
@@ -398,13 +398,15 @@ body {
     top: 6px;
     cursor: pointer;
     font-size: 1.4rem;
-    transition: all 0.1s ease
+    transition: all 0.1s ease;
+    pointer-events: none;
 }
 
 
 .message:hover i {
     right: 8px;
     opacity: 1;
+    pointer-events: all;
 }
 
 
@@ -415,9 +417,15 @@ body {
     position: absolute;
     right: -16px;
     top: 28px;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    scale: 0;
     overflow: hidden;
     z-index: 1000;
+    transition: all 0.2s ease-out;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.48);
 }
 
 
@@ -437,8 +445,16 @@ body {
 }
 
 
+.chat-menu {
+    top: 46px;
+    right: -2px;
+}
+
+
 .showmenu {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    scale: 1;
 }
 
 

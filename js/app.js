@@ -199,6 +199,7 @@ const app = createApp({
             typedMessage: '',
             currentMessage: '',
             isTyped: false,
+            showChatMenu: false,
         }
     },
 
@@ -209,6 +210,9 @@ const app = createApp({
                 return object.id === id;
             });
             this.isVisible = true;
+
+            this.currentMessage = '';
+            this.showChatMenu = false;
         },
 
         removeChatDisplay() {
@@ -275,6 +279,22 @@ const app = createApp({
             this.contacts[this.currentId].messages.splice(i, 1);
             this.currentMessage = '';
         },
+
+
+
+        menuChatToggle() {
+            if (!this.showChatMenu) {
+                this.showChatMenu = true;
+            } else {
+                this.showChatMenu = false;
+            }
+        },
+
+
+        deleteChat() {
+            this.contacts[this.currentId].messages = [];
+            this.showChatMenu = false;
+        }
 
 
     },
