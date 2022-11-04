@@ -115,8 +115,8 @@
                             <i class="fa-regular fa-face-smile"></i>
                             <input type="text" placeholder="Scrivi un messaggio" v-model.trim="typedMessage"
                                 @keyup.enter="sendNewMessage()">
-                            <i class="fa-solid fa-microphone" :class="{removeicon : send}"></i>
-                            <i class="fa-solid fa-paper-plane send-icon" :class="{addicon : send}"
+                            <i class="fa-solid fa-microphone" :class="{removeicon : changeIconSend}"></i>
+                            <i class="fa-solid fa-paper-plane send-icon" :class="{addicon : changeIconSend}"
                                 @click="sendNewMessage()"></i>
                         </div>
                     </div>

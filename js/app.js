@@ -190,7 +190,7 @@ const app = createApp({
             searchContacts: '',
             typedMessage: '',
             currentMessage: '',
-            send: false,
+            isTyped: false,
         }
     },
 
@@ -279,10 +279,10 @@ const app = createApp({
 
         changeIconSend() {
             const messageLength = this.typedMessage.length;
-            if (messageLength !== 0) {
-                return this.send = true;
+            if (messageLength > 0) {
+                return true;
             } else {
-                return this.send = false;
+                return false;
             }
 
         },
