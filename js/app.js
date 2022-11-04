@@ -236,7 +236,6 @@ const app = createApp({
 
                 return mex.status === 'received';
             })
-
             return mess[mess.length - 1];
 
         },
@@ -284,6 +283,7 @@ const app = createApp({
             }
 
         },
+
 
     }
 
