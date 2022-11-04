@@ -236,8 +236,11 @@ const app = createApp({
 
                 return mex.status === 'received';
             })
-            return mess[mess.length - 1];
-
+            if (mess.length > 0) {
+                return mess[mess.length - 1];
+            } else {
+                return mess;
+            }
         },
 
 

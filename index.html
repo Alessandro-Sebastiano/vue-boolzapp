@@ -61,10 +61,10 @@
                             </div>
                             <div class="contact-details">
                                 <span>{{contactsFilter[i].name}}</span>
-                                <span class="last-message">{{messageFilter(element).message}}</span>
-                                <span
-                                    class="contact-date">{{contactsFilter[i].messages[contactsFilter[i].messages.length
-                                    -1].date}}</span>
+                                <span class="last-message">{{messageFilter(element).length !== 0 ?
+                                    messageFilter(element).message : 'No messages'}}</span>
+                                <span class="contact-date">{{messageFilter(element).length !== 0 ?
+                                    messageFilter(element).date : ''}}</span>
                             </div>
                         </div>
                     </div>
