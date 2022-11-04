@@ -7,7 +7,7 @@
 
 
 body {
-    color: black;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 
@@ -56,6 +56,28 @@ body {
     height: 100%;
     background-image: url(../img/mine.jpg);
     background-position: center;
+    position: relative;
+}
+
+
+.welcome-message {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #6B7376;
+    padding: 12px;
+}
+
+
+.welcome-message h2 {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.hiddenwelcome {
+    display: none;
 }
 
 
