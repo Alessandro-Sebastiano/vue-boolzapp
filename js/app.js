@@ -192,7 +192,7 @@ const app = createApp({
                 'Ricordati di fare la spesa',
                 'Tutto bene',
             ],
-
+            viewSplash: false,
             currentId: 0,
             isVisible: false,
             searchContacts: '',
@@ -324,6 +324,17 @@ const app = createApp({
         },
 
 
+    },
+
+
+
+    mounted() {
+        setTimeout(() => {
+            this.viewSplash = true;
+        }, 300)
+        setTimeout(() => {
+            this.viewSplash = false;
+        }, 3000)
     }
 
 
