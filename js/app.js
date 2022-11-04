@@ -185,6 +185,14 @@ const app = createApp({
                 }
             ],
 
+            randomPhrase: [
+                'Ok!',
+                'Ciao',
+                'Come stai?',
+                'Ricordati di fare la spesa',
+                'Tutto bene',
+            ],
+
             currentId: 0,
             isVisible: false,
             searchContacts: '',
@@ -209,9 +217,11 @@ const app = createApp({
 
 
         sendNewMessage() {
+            const date = new Date();
+            const hour = date.getHours() + ':' + date.getMinutes();
             const newTypedMessage = {
 
-                date: '10/01/2020 15:30:55',
+                date: hour,
                 message: this.typedMessage,
                 status: 'sent'
 
@@ -222,7 +232,7 @@ const app = createApp({
 
                 setTimeout(() => {
                     const newRecivedMessage = { ...newTypedMessage };
-                    newRecivedMessage.message = 'OK!';
+                    newRecivedMessage.message = this.randomMessage();
                     newRecivedMessage.status = 'received';
                     this.contacts[this.currentId].messages.push(newRecivedMessage);
                 }, 1000);
@@ -231,9 +241,14 @@ const app = createApp({
         },
 
 
+        randomMessage() {
+            randomNumber = Math.floor(Math.random() * 5);
+            return this.randomPhrase[randomNumber];
+        },
+
+
         messageFilter(obj) {
             const mess = obj.messages.filter((mex) => {
-
                 return mex.status === 'received';
             })
             if (mess.length > 0) {
@@ -241,6 +256,7 @@ const app = createApp({
             } else {
                 return mess;
             }
+
         },
 
 
