@@ -189,7 +189,8 @@ const app = createApp({
             isVisible: false,
             searchContacts: '',
             typedMessage: '',
-            currentMessage: null,
+            currentMessage: '',
+            send: false,
         }
     },
 
@@ -227,7 +228,6 @@ const app = createApp({
 
 
         messageFilter(obj) {
-
             const mess = obj.messages.filter((mex) => {
 
                 return mex.status === 'received';
@@ -240,7 +240,7 @@ const app = createApp({
 
         showMessageMenu(i) {
 
-            if (!this.currentMessage) {
+            if (this.currentMessage !== i) {
                 this.currentMessage = i;
             } else {
                 this.currentMessage = '';
@@ -250,13 +250,9 @@ const app = createApp({
 
 
         deleteMessage(i) {
-            if (this.contacts[this.currentId].messages.length > 1) {
-                this.contacts[this.currentId].messages.splice(i, 1);
-            } else {
-                this.contacts[this.currentId].messages.pop();
-            }
+            this.contacts[this.currentId].messages.splice(i, 1);
             this.currentMessage = '';
-        }
+        },
 
 
     },
@@ -271,6 +267,17 @@ const app = createApp({
                 return contact.name.toLowerCase().includes(this.searchContacts.trim().toLowerCase());
 
             })
+
+        },
+
+
+        changeIconSend() {
+            const messageLength = this.typedMessage.length;
+            if (messageLength !== 0) {
+                return this.send = true;
+            } else {
+                return this.send = false;
+            }
 
         },
 
