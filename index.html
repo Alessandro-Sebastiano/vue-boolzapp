@@ -77,6 +77,9 @@
             </div>
 
             <div class="add-contact-popup" :class="viewPopUp ? 'popup-show' : ''">
+                <div class="close-popup" @click="closePopUp()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
                 <h2>Add New Contact</h2>
                 <input type="text" placeholder="Contact Name" v-model="newContactName">
                 <input type="text" placeholder="Contact Image URL" v-model="newContactImage">

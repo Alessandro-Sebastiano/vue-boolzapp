@@ -339,6 +339,13 @@ const app = createApp({
         },
 
 
+        closePopUp() {
+
+            this.viewPopUp = false;
+
+        },
+
+
         addContact() {
 
             const addNewContact = {
