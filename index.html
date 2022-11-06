@@ -178,7 +178,7 @@
 
                         <!-- messages-section -->
                         <div class="chat-display">
-                            <div class="message-box"
+                            <div class="message-box" ref="msg"
                                 :class="contacts[currentId].messages[i].status === 'received' ? '' : 'my-message-position'"
                                 v-for="(element, i) in contacts[currentId].messages">
                                 <span class="message"

@@ -241,13 +241,25 @@ const app = createApp({
             if (this.typedMessage != '') {
                 this.contacts[this.currentId].messages.push(newTypedMessage);
 
+                this.$nextTick(() => {
+                    const lastMsg = this.$refs.msg[this.$refs.msg.length - 1];
+                    lastMsg.scrollIntoView();
+                }, 500)
+
                 setTimeout(() => {
                     const newRecivedMessage = { ...newTypedMessage };
                     newRecivedMessage.message = this.randomMessage();
                     newRecivedMessage.status = 'received';
                     this.contacts[this.currentId].messages.push(newRecivedMessage);
-                }, 1000);
+
+                    this.$nextTick(() => {
+                        const lastMsg = this.$refs.msg[this.$refs.msg.length - 1];
+                        lastMsg.scrollIntoView();
+                    }, 1200)
+
+                }, 1000)
             }
+
             this.typedMessage = '';
         },
 
@@ -393,7 +405,6 @@ const app = createApp({
         setTimeout(() => {
             this.viewSplash = false;
         }, 2500)
-
     },
 
 })
