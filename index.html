@@ -76,9 +76,18 @@
                 </svg>
             </div>
 
+            <div class="add-contact-popup" :class="viewPopUp ? 'popup-show' : ''">
+                <h2>Add New Contact</h2>
+                <input type="text" placeholder="Contact Name" v-model="newContactName">
+                <input type="text" placeholder="Contact Image URL" v-model="newContactImage">
+                <div class="add-btn" @click="addContact()">
+                    <span>Add</span>
+                </div>
+            </div>
+
             <!-- App-box -->
-            <div class="app-box" :class="{blockcontrols : viewSplash}">
-                <!-- User-section/details/contacts/search-contacts/options-icon -->
+            <div class="app-box" :class="{blockcontrols : viewSplash}, {blockcontrols : viewPopUp}">
+                <!--User-section/details/contacts/search-contacts/options-icon -->
                 <div class="user-section">
                     <div class="user-info">
                         <!-- details -->
@@ -96,7 +105,7 @@
                             <div class="message-menu user-menu" :class="showUserMenu ? 'showmenu' : ''">
                                 <ul>
                                     <li>Account Info</li>
-                                    <li @click="addContact()">Add Contacts</li>
+                                    <li @click="showPopUp()">Add Contacts</li>
                                 </ul>
                             </div>
                         </div>
@@ -136,7 +145,8 @@
                 <!-- Chat-section/Contacts-details/Chat-messages -->
                 <div class="chat-section">
                     <div class="welcome-message">
-                        <h2 :class="{hiddenwelcome : isVisible}">Scegli un contatto dall lista per visulaizzare la chat
+                        <h2 :class="{hiddenwelcome : isVisible}">Scegli un contatto dall lista per visulaizzare la
+                            chat
                         </h2>
                     </div>
                     <div class="chat-box" :class="{chatshow : isVisible}">

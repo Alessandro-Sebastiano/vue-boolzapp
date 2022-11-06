@@ -192,6 +192,10 @@ const app = createApp({
                 'Ricordati di fare la spesa',
                 'Tutto bene',
             ],
+
+            newContactName: '',
+            newContactImage: '',
+            viewPopUp: false,
             viewSplash: false,
             currentId: 0,
             isVisible: false,
@@ -312,13 +316,24 @@ const app = createApp({
 
 
 
+        showPopUp() {
+
+            if (!this.viewPopUp) {
+                this.viewPopUp = true;
+            }
+
+            this.showUserMenu = false;
+
+        },
+
+
         addContact() {
 
             const addNewContact = {
 
                 id: this.contacts.length + 1,
-                name: 'Michele',
-                avatar: './img/avatar_1.jpg',
+                name: this.newContactName,
+                avatar: this.newContactImage,
                 visible: true,
                 isSelected: false,
                 messages: [
@@ -326,10 +341,16 @@ const app = createApp({
                 ]
             }
 
-            console.log(addNewContact.id);
+            if (this.newContactName !== '' && this.newContactImage !== '') {
+                this.contacts.push(addNewContact);
+
+                this.newContactName = '';
+                this.newContactImage = '';
+
+                this.viewPopUp = false;
+            }
 
 
-            this.contacts.push(addNewContact);
 
         },
 
@@ -371,7 +392,7 @@ const app = createApp({
         }, 300)
         setTimeout(() => {
             this.viewSplash = false;
-        }, 3000)
+        }, 2500)
 
     },
 
