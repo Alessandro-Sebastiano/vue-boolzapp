@@ -20,8 +20,9 @@
 <body>
 
     <div id="app">
-
+        <!-- App-container -->
         <div class="app-container">
+            <!-- initial-splash-page -->
             <div class="splash-page" :class="viewSplash ? 'splash-page-visible' : ''">
                 <svg viewBox="0 0 303 172" width="360" preserveAspectRatio="xMidYMid meet" class="" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -74,20 +75,30 @@
                         fill="white" stroke="#316474"></path>
                 </svg>
             </div>
-            <div class="app-box">
 
+            <!-- App-box -->
+            <div class="app-box" :class="{blockcontrols : viewSplash}">
+                <!-- User-section/details/contacts/search-contacts/options-icon -->
                 <div class="user-section">
                     <div class="user-info">
+                        <!-- details -->
                         <div class="user-details">
                             <div class="user-image">
                                 <img src="./img/avatar_io.jpg" alt="io">
                             </div>
                             <span>Username</span>
                         </div>
+                        <!-- user-options-icons -->
                         <div class="user-options">
                             <i class="fa-solid fa-circle-notch"></i>
                             <i class="fa-solid fa-message"></i>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <i class="fa-solid fa-ellipsis-vertical" @click="menuUserToggle()"></i>
+                            <div class="message-menu user-menu" :class="showUserMenu ? 'showmenu' : ''">
+                                <ul>
+                                    <li>Account Info</li>
+                                    <li @click="addContact()">Add Contacts</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="notification">
@@ -99,13 +110,15 @@
                             <span><a href="#">Attiva notifiche desktop</a></span>
                         </div>
                     </div>
+                    <!-- search-contacts -->
                     <div class="search">
                         <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchContacts">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
+                    <!-- contacts -->
                     <div class="user-contacts">
-                        <div class="contact-box" :class="i === currentId ? 'selected' : ''"
-                            v-for="(element, i) in contactsFilter" @click="selectedContact(contactsFilter[i].id, i)">
+                        <div class="contact-box" :class="element.id - 1 === currentId ? 'selected' : ''"
+                            v-for="(element, i) in contactsFilter" @click="selectedContact(contactsFilter[i].id)">
                             <div class="contact-image user-image">
                                 <img :src="contactsFilter[i].avatar" :alt="contactsFilter[i].name">
                             </div>
@@ -120,12 +133,14 @@
                     </div>
                 </div>
 
+                <!-- Chat-section/Contacts-details/Chat-messages -->
                 <div class="chat-section">
                     <div class="welcome-message">
                         <h2 :class="{hiddenwelcome : isVisible}">Scegli un contatto dall lista per visulaizzare la chat
                         </h2>
                     </div>
                     <div class="chat-box" :class="{chatshow : isVisible}">
+                        <!-- contact-details -->
                         <div class="chat-nav">
                             <div class="chat-user-details">
                                 <i class="fa-solid fa-arrow-left" @click="removeChatDisplay()"></i>
@@ -137,6 +152,7 @@
                                     <span>Ultimo accesso</span>
                                 </div>
                             </div>
+                            <!-- contacts-options-icons -->
                             <div class="chat-user-options">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <i class="fa-solid fa-paperclip"></i>
@@ -148,8 +164,9 @@
                                     </ul>
                                 </div>
                             </div>
-
                         </div>
+
+                        <!-- messages-section -->
                         <div class="chat-display">
                             <div class="message-box"
                                 :class="contacts[currentId].messages[i].status === 'received' ? '' : 'my-message-position'"
@@ -158,16 +175,19 @@
                                     :class="contacts[currentId].messages[i].status === 'sent' ? 'my-message' : 'contact-message'">
                                     <span class="message-text">{{contacts[currentId].messages[i].message}}</span>
                                     <span class="message-date">{{contacts[currentId].messages[i].date}}</span>
-                                    <i class="fa-solid fa-angle-down" @click="showMessageMenu(i, element)"></i>
-                                    <div class="message-menu" :class="i === currentMessage ? 'showmenu' : ''">
+                                    <i class="fa-solid fa-angle-down" @click="showMessageMenu(i)"></i>
+                                    <div class="message-menu"
+                                        :class="i === currentMessage ? 'showmenu' : '', contacts[currentId].messages[i].status === 'received' ? 'message-menu-left ' : ''">
                                         <ul>
                                             <li>Message info</li>
-                                            <li @click="deleteMessage(i)">Delete message</li>
+                                            <li @click=" deleteMessage(i)">Delete message</li>
                                         </ul>
                                     </div>
                                 </span>
                             </div>
                         </div>
+
+                        <!-- input-send-message -->
                         <div class="chat-input">
                             <i class="fa-regular fa-face-smile"></i>
                             <input type="text" placeholder="Scrivi un messaggio" v-model.trim="typedMessage"
@@ -187,6 +207,7 @@
 
 
     <script src="./js/app.js"></script>
+    <script src="./js/luxon.min.js"></script>
 </body>
 
 </html>

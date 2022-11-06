@@ -93,6 +93,9 @@ body {}
 }
 
 
+.blockcontrols {
+    pointer-events: none;
+}
 
 
 .user-section {
@@ -180,6 +183,7 @@ body {}
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 
@@ -485,6 +489,13 @@ body {}
 }
 
 
+
+.message-menu-left {
+    right: -86px;
+}
+
+
+
 .message-menu ul {
     list-style: none;
 }
@@ -501,10 +512,17 @@ body {}
 }
 
 
+.user-menu {
+    top: 46px;
+    right: 4px;
+}
+
+
 .chat-menu {
     top: 46px;
     right: -2px;
 }
+
 
 
 .showmenu {

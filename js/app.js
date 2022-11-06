@@ -200,6 +200,7 @@ const app = createApp({
             currentMessage: '',
             isTyped: false,
             showChatMenu: false,
+            showUserMenu: false,
         }
     },
 
@@ -209,9 +210,10 @@ const app = createApp({
             this.currentId = this.contacts.findIndex(object => {
                 return object.id === id;
             });
+
             this.isVisible = true;
 
-            this.currentMessage = '';
+            this.typedMessage = '';
             this.showChatMenu = false;
         },
 
@@ -221,11 +223,12 @@ const app = createApp({
 
 
         sendNewMessage() {
-            const date = new Date();
-            const hour = date.getHours() + ':' + date.getMinutes();
+            let now = luxon.DateTime.now();
+            now = now.setLocale('en-US').toLocaleString(luxon.DateTime.TIME_24_SIMPLE);
+
             const newTypedMessage = {
 
-                date: hour,
+                date: now,
                 message: this.typedMessage,
                 status: 'sent'
 
@@ -291,10 +294,45 @@ const app = createApp({
         },
 
 
+        menuUserToggle() {
+
+            if (!this.showUserMenu) {
+                this.showUserMenu = true;
+            } else {
+                this.showUserMenu = false;
+            }
+
+        },
+
+
         deleteChat() {
             this.contacts[this.currentId].messages = [];
             this.showChatMenu = false;
-        }
+        },
+
+
+
+        addContact() {
+
+            const addNewContact = {
+
+                id: this.contacts.length + 1,
+                name: 'Michele',
+                avatar: './img/avatar_1.jpg',
+                visible: true,
+                isSelected: false,
+                messages: [
+
+                ]
+            }
+
+            console.log(addNewContact.id);
+
+
+            this.contacts.push(addNewContact);
+
+        },
+
 
 
     },
@@ -323,7 +361,6 @@ const app = createApp({
 
         },
 
-
     },
 
 
@@ -335,8 +372,8 @@ const app = createApp({
         setTimeout(() => {
             this.viewSplash = false;
         }, 3000)
-    }
 
+    },
 
 })
 
